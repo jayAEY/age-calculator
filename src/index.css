@@ -11,3 +11,10 @@
   --smokey-grey: hsl(0, 1%, 44%);
   --off-black: hsl(0, 0%, 8%);
 }
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button,
+input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
