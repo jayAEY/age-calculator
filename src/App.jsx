@@ -6,33 +6,38 @@ function App() {
   let currentYear = new Date().getFullYear();
   let currentMonth = new Date().getMonth();
   let currentDay = new Date().getDate();
-  let currentDate = new Date(currentYear, currentMonth, currentDay);
 
   let [year, setYear] = useState(currentYear);
-  let [month, setMonth] = useState(currentMonth);
+  let [month, setMonth] = useState(currentMonth + 1);
   let [day, setDay] = useState(currentDay);
 
+  let currentDate = new Date(currentYear, currentMonth, currentDay);
   let inputDate = new Date(`${year},${month},${day}`);
 
-  let result = currentDate - inputDate;
-  // result = result / 1000;
-  // let resultYears = result / 31556952;
-  // let resultMonths;
-  // let resultSeconds;
-  let resultDays = Math.floor(result / 1000 / 60 / 60 / 24);
+  let result = new Date(currentDate - inputDate);
+  // console.log(currentDate, inputDate);
 
-  // let resultDays = Math.floor((result)/1000)
+  // milliseconds > seconds > minutes > hours > days
+  // let resultDays = Math.floor(result / 1000 / 60 / 60 / 24);
+  let [returnYear, setReturnYear] = useState("- - ");
+  let [returnMonth, setReturnMonth] = useState("- - ");
+  let [returnDay, setReturnDay] = useState("- - ");
 
   useEffect(() => {
     inputDate = new Date(`${year},${month},${day}`);
-    // console.log(resultYears, resultMonths, resultSeconds);
-    console.log(resultDays);
+    setReturnYear(result.getFullYear() - 1970);
+    setReturnMonth(result.getMonth());
+    setReturnDay(result.getDate());
+    // console.log(inputDate);
+    // setReturnYear(Math.floor(resultDays / 365.25));
+    // console.log(Math.floor(resultDays / 365.25));
+
+    // console.log(Math.floor(resultDays - returnYear * 365.25));
+
+    // setReturnYear(resultDays / 365.25);
+
+    // console.log(returnYear);
   }, [year, month, day]);
-  //   let year =
-  //   let month
-  // let day
-  // let inputDate = new Date(year, month, day);
-  // console.log(currentDate, inputDate, year, month, day);
 
   return (
     <main className="min-w-svw min-h-svh flex justify-center items-center font-poppins bg-[--light-grey]">
@@ -69,7 +74,7 @@ function App() {
               placeholder="MM"
               className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md"
               onChange={(e) => {
-                setMonth(e.target.value - 1);
+                setMonth(e.target.value);
               }}
             />
           </div>
@@ -101,16 +106,13 @@ function App() {
         </div>
         <div className="-mt-10">
           <h1 className="text-[3.2rem] tracking-tight -mb-5 italic font-[800]">
-            <span className="text-[--purple]">- - </span>
-            years
+            <span className="text-[--purple]">{returnYear}</span> years
           </h1>
           <h1 className="text-[3.2rem] tracking-tight -mb-5 italic font-[800]">
-            <span className="text-[--purple]">- - </span>
-            months
+            <span className="text-[--purple]">{returnMonth}</span> months
           </h1>
           <h1 className="text-[3.2rem] tracking-tight italic font-[800]">
-            <span className="text-[--purple]">- - </span>
-            days
+            <span className="text-[--purple]">{returnDay}</span> days
           </h1>
         </div>
       </div>
