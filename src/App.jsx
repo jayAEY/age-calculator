@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 function App() {
-  // let currentDate = new Date().toLocaleDateString();
   let currentYear = new Date().getFullYear();
   let currentMonth = new Date().getMonth();
   let currentDay = new Date().getDate();
@@ -17,17 +16,17 @@ function App() {
   let result = new Date(currentDate - inputDate);
   // console.log(currentDate, inputDate);
 
-  // milliseconds > seconds > minutes > hours > days
-  // let resultDays = Math.floor(result / 1000 / 60 / 60 / 24);
   let [returnYear, setReturnYear] = useState("- - ");
   let [returnMonth, setReturnMonth] = useState("- - ");
   let [returnDay, setReturnDay] = useState("- - ");
 
-  useEffect(() => {
+  // useEffect(() => {
+  function calculate() {
     inputDate = new Date(`${year},${month},${day}`);
     setReturnYear(result.getFullYear() - 1970);
     setReturnMonth(result.getMonth());
     setReturnDay(result.getDate());
+
     // console.log(inputDate);
     // setReturnYear(Math.floor(resultDays / 365.25));
     // console.log(Math.floor(resultDays / 365.25));
@@ -37,7 +36,10 @@ function App() {
     // setReturnYear(resultDays / 365.25);
 
     // console.log(returnYear);
-  }, [year, month, day]);
+    //  }, [year, month, day]);
+    console.log(returnDay, returnMonth, returnYear);
+  }
+  // }, [returnDay, returnMonth, returnYear]);
 
   return (
     <main className="min-w-svw min-h-svh flex justify-center items-center font-poppins bg-[--light-grey]">
@@ -101,10 +103,13 @@ function App() {
           <span className="w-full h-0.5 bg-[--light-grey]" />
           <img
             src="images/icon-arrow.svg"
-            className="rounded-[100px] bg-[--purple] -mt-8 p-4 w-14 h-14"
+            className="drop-shadow-2xl w-20 h-20"
+            // className="rounded-[100px] bg-[--purple] -mt-8 p-4 w-14 h-14 hover:cursor-pointer hover:w-16 hover:h-16"
+            // 0 1px 1px rgb(133,77,255,1)]
+            onClick={() => calculate()}
           ></img>
         </div>
-        <div className="-mt-10">
+        <div className="mt-[180px] absolute">
           <h1 className="text-[3.2rem] tracking-tight -mb-5 italic font-[800]">
             <span className="text-[--purple]">{returnYear}</span> years
           </h1>
