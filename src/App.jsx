@@ -5,9 +5,13 @@ function App() {
   let currentMonth = new Date().getMonth();
   let currentDay = new Date().getDate();
 
-  let [year, setYear] = useState(currentYear);
-  let [month, setMonth] = useState(currentMonth + 1);
-  let [day, setDay] = useState(currentDay);
+  // let [year, setYear] = useState(currentYear);
+  // let [month, setMonth] = useState(currentMonth + 1);
+  // let [day, setDay] = useState(currentDay);
+
+  let [year, setYear] = useState();
+  let [month, setMonth] = useState();
+  let [day, setDay] = useState();
 
   let currentDate = new Date(currentYear, currentMonth, currentDay);
   let inputDate = new Date(`${year},${month},${day}`);
@@ -20,12 +24,20 @@ function App() {
 
   function calculate(e) {
     e.preventDefault();
-    // console.log(e);
-    inputDate = new Date(`${year},${month},${day}`);
-    // console.log(inputDate);
-    setReturnYear(result.getFullYear() - 1970);
-    setReturnMonth(result.getMonth());
-    setReturnDay(result.getDate());
+
+    if (
+      inputDate.getFullYear() == year &&
+      inputDate.getMonth() + 1 == month &&
+      inputDate.getDate() == day &&
+      currentDate - inputDate > 0
+    ) {
+      console.log("valid");
+      setReturnYear(result.getFullYear() - 1970);
+      setReturnMonth(result.getMonth());
+      setReturnDay(result.getDate());
+    } else {
+      console.log("invalid");
+    }
     // console.log(returnDay, returnMonth, returnYear);
   }
 
@@ -36,7 +48,7 @@ function App() {
           id="date-input"
           className="flex w-full justify-between mt-4 lg:justify-start lg:gap-5 lg:mt-0"
           onSubmit={(e) => calculate(e)}
-          onInvalid={(e) => console.log(e.target.value)}
+          onInvalid={(e) => console.log("invalid")}
         >
           {/* <div className="flex w-full justify-between mt-4 lg:justify-start lg:gap-5 lg:mt-0"> */}
           <div className="flex flex-col lg:gap-2">
