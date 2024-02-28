@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+// import arrow as arrow from "../public/images/icon-arrow.svg";
 
 function App() {
   let currentYear = new Date().getFullYear();
@@ -101,13 +102,30 @@ function App() {
         </div>
         <div className="flex flex-col items-center w-full my-16">
           <span className="w-full h-0.5 bg-[--light-grey]" />
-          <img
+          {arrow}
+          {/* <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="46"
+            height="44"
+            viewBox="0 0 46 44"
+          >
+            <g
+              fill="none"
+              stroke="#FFF"
+              strokeWidth="4"
+            >
+              <path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44" />
+            </g>
+          </svg> */}
+          {/* <img
+            id="arrow"
             src="images/icon-arrow.svg"
-            className="drop-shadow-2xl w-20 h-20"
-            // className="rounded-[100px] bg-[--purple] -mt-8 p-4 w-14 h-14 hover:cursor-pointer hover:w-16 hover:h-16"
+            // className="drop-shadow-2xl w-20 h-20"
+            className="rounded-[100px] bg-[--purple] -mt-8 p-4 w-14 h-14 transition-all hover:cursor-pointer hover:w-16 hover:h-16 filter"
             // 0 1px 1px rgb(133,77,255,1)]
             onClick={() => calculate()}
-          ></img>
+          ></img> */}
+          {/* <div className="bg-[--purple] bg-[url('/icon-arrow.svg')]  w-[34px] h-[34px]"></div> */}
         </div>
         <div className="mt-[180px] absolute">
           <h1 className="text-[3.2rem] tracking-tight -mb-5 italic font-[800]">
