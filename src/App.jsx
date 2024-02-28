@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import { useState } from "react";
-// import arrow as arrow from "../public/images/icon-arrow.svg";
 
 function App() {
   let currentYear = new Date().getFullYear();
@@ -21,34 +19,21 @@ function App() {
   let [returnMonth, setReturnMonth] = useState("- - ");
   let [returnDay, setReturnDay] = useState("- - ");
 
-  // useEffect(() => {
   function calculate() {
     inputDate = new Date(`${year},${month},${day}`);
     setReturnYear(result.getFullYear() - 1970);
     setReturnMonth(result.getMonth());
     setReturnDay(result.getDate());
-
-    // console.log(inputDate);
-    // setReturnYear(Math.floor(resultDays / 365.25));
-    // console.log(Math.floor(resultDays / 365.25));
-
-    // console.log(Math.floor(resultDays - returnYear * 365.25));
-
-    // setReturnYear(resultDays / 365.25);
-
-    // console.log(returnYear);
-    //  }, [year, month, day]);
     console.log(returnDay, returnMonth, returnYear);
   }
-  // }, [returnDay, returnMonth, returnYear]);
 
   return (
     <main className="min-w-svw min-h-svh flex justify-center items-center font-poppins bg-[--light-grey]">
-      <div className="flex flex-col w-[320px] h-[440px] p-5 rounded-2xl rounded-br-[125px] bg-[white]">
-        <div className="flex w-full justify-between mt-4">
-          <div className="flex flex-col">
+      <div className="flex flex-col w-[320px] h-[440px] p-5 rounded-2xl rounded-br-[125px] bg-[white] lg:h-[450px] lg:w-[600px] lg:p-10 lg:rounded-br-[150px]">
+        <div className="flex w-full justify-between mt-4 lg:justify-start lg:gap-5 lg:mt-0">
+          <div className="flex flex-col lg:gap-2">
             <label
-              className="uppercase font-bold text-xs text-[--smokey-grey] tracking-widest"
+              className="uppercase font-bold text-xs text-[--smokey-grey] tracking-[0.2rem]"
               htmlFor="day"
             >
               Day
@@ -57,16 +42,16 @@ function App() {
               id="day"
               type="number"
               placeholder="DD"
-              className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md "
+              className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md lg:w-[115px] lg:h-[55px] lg:text-[1.4rem] lg:font-bold lg:p-3"
               onChange={(e) => {
                 setDay(e.target.value);
               }}
             />
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col lg:gap-2">
             <label
-              className="uppercase font-bold text-xs text-[--smokey-grey] tracking-widest"
+              className="uppercase font-bold text-xs text-[--smokey-grey] tracking-[0.2rem]"
               htmlFor="month"
             >
               Month
@@ -75,16 +60,16 @@ function App() {
               id="month"
               type="number"
               placeholder="MM"
-              className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md"
+              className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md lg:w-[115px] lg:h-[55px] lg:text-[1.4rem] lg:font-bold lg:p-3"
               onChange={(e) => {
                 setMonth(e.target.value);
               }}
             />
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col lg:gap-2">
             <label
-              className="uppercase font-bold text-xs text-[--smokey-grey] tracking-widest"
+              className="uppercase font-bold text-xs text-[--smokey-grey] tracking-[0.2rem]"
               htmlFor="year"
             >
               Year
@@ -93,48 +78,45 @@ function App() {
               id="year"
               type="number"
               placeholder="YYYY"
-              className="w-[85px] h-11 p-1 text-black font-extrabold border-[--light-grey] border-2 rounded-md"
+              className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md lg:w-[115px] lg:h-[55px] lg:text-[1.4rem] lg:font-bold lg:p-3"
               onChange={(e) => {
                 setYear(e.target.value);
               }}
             />
           </div>
         </div>
-        <div className="flex flex-col items-center w-full my-16">
+
+        <div className="flex flex-col items-center w-full my-16 lg:my-8 lg:items-end">
           <span className="w-full h-0.5 bg-[--light-grey]" />
-          {arrow}
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="46"
-            height="44"
-            viewBox="0 0 46 44"
-          >
-            <g
-              fill="none"
-              stroke="#FFF"
-              strokeWidth="4"
-            >
-              <path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44" />
-            </g>
-          </svg> */}
-          {/* <img
-            id="arrow"
-            src="images/icon-arrow.svg"
-            // className="drop-shadow-2xl w-20 h-20"
-            className="rounded-[100px] bg-[--purple] -mt-8 p-4 w-14 h-14 transition-all hover:cursor-pointer hover:w-16 hover:h-16 filter"
-            // 0 1px 1px rgb(133,77,255,1)]
+          <div
+            className=" flex justify-center items-center rounded-[100px] bg-[--purple] -mt-8 w-[60px] h-[60px] transition-all hover:cursor-pointer hover:w-[64px] hover:h-[64px] hover:shadow-[0_0_18px_3px_rgba(133,77,255,0.5)] lg:scale-[115%]"
             onClick={() => calculate()}
-          ></img> */}
-          {/* <div className="bg-[--purple] bg-[url('/icon-arrow.svg')]  w-[34px] h-[34px]"></div> */}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="32"
+              viewBox="0 0 46 44"
+            >
+              <g
+                fill="none"
+                stroke="#FFF"
+                strokeWidth="4"
+              >
+                <path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44" />
+              </g>
+            </svg>
+          </div>
         </div>
-        <div className="mt-[180px] absolute">
-          <h1 className="text-[3.2rem] tracking-tight -mb-5 italic font-[800]">
+
+        <div className="mt-[180px] absolute lg:mt-[120px]">
+          <h1 className="text-[3.2rem] tracking-tight -mb-5 italic font-[800] lg:text-[4.5rem] lg:-mb-8">
             <span className="text-[--purple]">{returnYear}</span> years
           </h1>
-          <h1 className="text-[3.2rem] tracking-tight -mb-5 italic font-[800]">
+          <h1 className="text-[3.2rem] tracking-tight -mb-5 italic font-[800] lg:text-[4.5rem] lg:-mb-8">
             <span className="text-[--purple]">{returnMonth}</span> months
           </h1>
-          <h1 className="text-[3.2rem] tracking-tight italic font-[800]">
+          <h1 className="text-[3.2rem] tracking-tight -mb-5 italic font-[800] lg:text-[4.5rem] lg:-mb-8">
             <span className="text-[--purple]">{returnDay}</span> days
           </h1>
         </div>
