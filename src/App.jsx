@@ -43,14 +43,13 @@ function App() {
 
   return (
     <main className="min-w-svw min-h-svh flex justify-center items-center font-poppins bg-[--light-grey]">
-      <div className="flex flex-col w-[320px] h-[440px] p-5 rounded-2xl rounded-br-[125px] bg-[white] lg:h-[450px] lg:w-[600px] lg:p-10 lg:rounded-br-[150px] transition-all duration-200">
+      <div className="flex flex-col w-[320px] h-[440px] p-5 rounded-2xl rounded-br-[125px] bg-[white] lg:h-[490px] lg:w-[600px] lg:p-10 lg:rounded-br-[150px] transition-all duration-200">
         <form
           id="date-input"
           className="flex w-full justify-between mt-4 lg:justify-start lg:gap-5 lg:mt-0"
           onSubmit={(e) => calculate(e)}
           onInvalid={(e) => console.log("invalid")}
         >
-          {/* <div className="flex w-full justify-between mt-4 lg:justify-start lg:gap-5 lg:mt-0"> */}
           <div className="flex flex-col lg:gap-2">
             <label
               className="uppercase font-bold text-xs text-[--smokey-grey] tracking-[0.2rem]"
@@ -63,7 +62,7 @@ function App() {
               form="date-input"
               type="number"
               placeholder="DD"
-              className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md lg:w-[115px] lg:h-[55px] lg:text-[1.4rem] lg:font-bold lg:p-3"
+              className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md lg:w-[125px] lg:h-[55px] lg:text-[1.4rem] lg:font-bold lg:p-3"
               onChange={(e) => {
                 setDay(e.target.value);
               }}
@@ -71,6 +70,9 @@ function App() {
               max={31}
               required
             />
+            <span className="w-[70px] text-[0.8rem] mt-1 italic text-[--light-red] leading-3 lg:w-[115px] lg:text-[0.69rem]">
+              Must be a valid date
+            </span>
           </div>
 
           <div className="flex flex-col lg:gap-2">
@@ -85,7 +87,7 @@ function App() {
               form="date-input"
               type="number"
               placeholder="MM"
-              className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md lg:w-[115px] lg:h-[55px] lg:text-[1.4rem] lg:font-bold lg:p-3"
+              className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md lg:w-[125px] lg:h-[55px] lg:text-[1.4rem] lg:font-bold lg:p-3"
               onChange={(e) => {
                 setMonth(e.target.value);
               }}
@@ -93,6 +95,9 @@ function App() {
               max={12}
               required
             />
+            <span className="w-[70px] text-[0.8rem] mt-1 italic text-[--light-red] leading-3 lg:w-[115px] lg:text-[0.69rem]">
+              This field is required
+            </span>
           </div>
 
           <div className="flex flex-col lg:gap-2">
@@ -107,32 +112,26 @@ function App() {
               form="date-input"
               type="number"
               placeholder="YYYY"
-              className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md lg:w-[115px] lg:h-[55px] lg:text-[1.4rem] lg:font-bold lg:p-3"
+              className="w-[85px] h-11 p-2 text-black font-extrabold border-[--light-grey] border-2 rounded-md lg:w-[125px] lg:h-[55px] lg:text-[1.4rem] lg:font-bold lg:p-3"
               onChange={(e) => {
                 setYear(e.target.value);
               }}
               max={currentYear}
               required
             />
+            <span className="w-[70px] text-[0.8rem] mt-1 italic text-[--light-red] leading-3 lg:w-[115px] lg:text-[0.69rem]">
+              This field is required
+            </span>
           </div>
         </form>
-        {/* </div> */}
 
-        <div className="flex flex-col items-center w-full my-16 lg:my-8 lg:items-end">
+        <div className="flex flex-col items-center w-full  my-11 lg:my-8 lg:items-end">
           <span className="w-full h-0.5 bg-[--light-grey]" />
-          {/* <div */}
           <button
             type="submit"
             form="date-input"
             className=" flex justify-center items-center rounded-[100px] bg-[--purple] -mt-8 w-[60px] h-[60px] transition-all duration-300 hover:bg-black hover:cursor-pointer hover:w-[64px] hover:h-[64px] hover:shadow-[0_0_18px_3px_rgba(133,77,255,0.5)] lg:scale-[115%]"
-            // onClick={(e) => {
-            //   e.preventDefault();
-            //   calculate(e);
-            // }}
-
-            // onInvalid={(e) => console.log(e)}
           >
-            {/* > */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="25"
@@ -148,10 +147,9 @@ function App() {
               </g>
             </svg>
           </button>
-          {/* </div> */}
         </div>
 
-        <div className="mt-[180px] absolute lg:mt-[120px]">
+        <div className="mt-[180px] absolute lg:mt-[155px]">
           <h1 className="text-[3.2rem] tracking-tight -mb-5 italic font-[800] lg:text-[4.5rem] lg:-mb-8">
             <span className="text-[--purple]">{returnYear}</span> years
           </h1>
