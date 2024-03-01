@@ -121,7 +121,7 @@ function App() {
   }
 
   return (
-    <main className="min-w-svw min-h-svh flex justify-center items-center font-poppins bg-[--light-grey]">
+    <main className="min-w-svw min-h-svh flex justify-center items-center font-poppins bg-[--off-white]">
       <div className="flex flex-col w-[320px] h-[460px] p-5 rounded-2xl rounded-br-[115px] bg-[white] lg:h-[490px] lg:w-[600px] lg:p-10 lg:rounded-br-[150px] transition-all duration-200">
         <form
           id="date-input"
