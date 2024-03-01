@@ -1,23 +1,22 @@
 import { useState } from "react";
 
 function App() {
+  // current date
   let currentYear = new Date().getFullYear();
   let currentMonth = new Date().getMonth();
   let currentDay = new Date().getDate();
-
+  let currentDate = new Date(currentYear, currentMonth, currentDay);
+  //input date
   let [year, setYear] = useState();
   let [month, setMonth] = useState();
   let [day, setDay] = useState();
-
-  let currentDate = new Date(currentYear, currentMonth, currentDay);
   let inputDate = new Date(`${year},${month},${day}`);
-
-  let result = new Date(currentDate - inputDate);
-
+  //return date
+  let returnDate = new Date(currentDate - inputDate);
   let [returnYear, setReturnYear] = useState("- - ");
   let [returnMonth, setReturnMonth] = useState("- - ");
   let [returnDay, setReturnDay] = useState("- - ");
-
+  //error messges
   let [dayError, setDayError] = useState("");
   let [monthError, setMonthError] = useState("");
   let [yearError, setYearError] = useState("");
@@ -28,24 +27,31 @@ function App() {
       !dayError &&
       !monthError &&
       !yearError &&
-      // checks if converted date is equal to inputs
-      inputDate.getFullYear() == year &&
-      inputDate.getMonth() + 1 == month &&
+      // checks if converted date is equal to input
       inputDate.getDate() == day &&
-      //checks if in the past
+      // checks if in the past
       currentDate - inputDate > 0
     ) {
-      setReturnYear(result.getFullYear() - 1970);
-      setReturnMonth(result.getMonth());
-      setReturnDay(result.getDate());
+      // setReturnYear(returnDate.getFullYear() - 1970);
+      animateCount(returnDate.getFullYear() - 1970, setReturnYear);
+      animateCount(returnDate.getMonth(), setReturnMonth);
+      animateCount(returnDate.getDay(), setReturnDay);
+
+      setReturnMonth(returnDate.getMonth());
+      setReturnDay(returnDate.getDate());
       setDayError("");
       setMonthError("");
       setYearError("");
-    } else if (currentDate - inputDate < 0) {
+    } else if (
+      // handles dates not in past
+      currentDate - inputDate <= 0 &&
+      inputDate.getDate() == day
+    ) {
       setDayError("Must be in the past");
       setMonthError(" ");
       setYearError(" ");
     } else {
+      //handles invalid dates like april 31
       setDayError("Must be a valid date");
     }
   }
@@ -55,6 +61,7 @@ function App() {
     if (value.length < 1) {
       setDayError("This field is required");
     } else if (
+      //checks for strings
       value.toLowerCase() != value.toUpperCase() ||
       value < 1 ||
       value > 31
@@ -62,6 +69,8 @@ function App() {
       setDayError("Must be a valid day");
     } else {
       setDayError("");
+      setMonthError("");
+      setYearError("");
       setDay(value);
     }
   }
@@ -77,7 +86,9 @@ function App() {
     ) {
       setMonthError("Must be a valid month");
     } else {
+      setDayError("");
       setMonthError("");
+      setYearError("");
       setMonth(value);
     }
   }
@@ -93,9 +104,20 @@ function App() {
     } else if (value < 100) {
       setYearError("Please don't lie, you are not this old");
     } else {
+      setDayError("");
+      setMonthError("");
       setYearError("");
       setYear(value);
     }
+  }
+
+  function animateCount(end, setState) {
+    let count = 0;
+    let interval = setInterval(() => {
+      if (count >= end) clearInterval(interval);
+      count++;
+      setState(count);
+    }, 15);
   }
 
   return (
