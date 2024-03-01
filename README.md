@@ -54,7 +54,7 @@ Users should be able to:
 
 ### Continued development
 
-This project took alot longer than I expected. At first, I thought it would be a fairly straightforward way to practice styling with tailwind. It turns out, things like handling dates, creating custom error messages and creating funtions to handle validity were a lot of work.
+This project took a lot longer than I expected. At first, I thought it would be a fairly straightforward way to practice styling with tailwind. It turns out, things like handling dates, creating custom error messages and creating functions to handle validity were a lot of work. Thankfully, the animation was easier than I expected.
 
 ## Author
 
