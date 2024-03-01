@@ -232,6 +232,7 @@ function App() {
             type="submit"
             form="date-input"
             className="flex justify-center items-center rounded-[100px] bg-[--purple] -mt-8 w-[60px] h-[60px] transition-all duration-300 hover:bg-black hover:cursor-pointer hover:w-[64px] hover:h-[64px] hover:shadow-[0_0_18px_3px_rgba(133,77,255,0.5)] lg:scale-[115%]"
+            aria-label="calculate"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
