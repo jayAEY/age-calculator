@@ -49,8 +49,9 @@ Users should be able to:
 - Flexbox
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [TailwindCSS](https://nextjs.org/) - CSS framework
+- [Vite](https://vitejs.dev/) - Frontend Build Tool
+
 
 ### Continued development
 
