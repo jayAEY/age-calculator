@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   // current date
@@ -16,7 +16,7 @@ function App() {
   let [returnYear, setReturnYear] = useState("- - ");
   let [returnMonth, setReturnMonth] = useState("- - ");
   let [returnDay, setReturnDay] = useState("- - ");
-  //error messges
+  //error messages
   let [dayError, setDayError] = useState("");
   let [monthError, setMonthError] = useState("");
   let [yearError, setYearError] = useState("");
@@ -32,13 +32,35 @@ function App() {
       // checks if in the past
       currentDate - inputDate > 0
     ) {
-      // setReturnYear(returnDate.getFullYear() - 1970);
+      // ALTERNATIVE WAY TO CALCULATE?
+      //difference in days
+      // let difference = Math.floor(
+      //   (currentDate - inputDate) / 1000 / 60 / 60 / 24
+      // );
+
+      // let years = Math.floor(difference / 365.25);
+      // let months = Math.floor(
+      //   (difference - Math.floor(difference / 365.25) * 365.25) / 30.437
+      // );
+      // let days = Math.floor(
+      //   difference -
+      //     Math.floor(difference / 365.25) * 365.25 -
+      //     Math.floor(
+      //       (difference - Math.floor(difference / 365.25) * 365.25) / 30.437
+      //     ) *
+      //       30.437
+      // );
+
+      // animateCount(years, setReturnYear);
+      // animateCount(months, setReturnMonth);
+      // animateCount(days, setReturnDay);
+
       animateCount(returnDate.getFullYear() - 1970, setReturnYear);
       animateCount(returnDate.getMonth(), setReturnMonth);
       animateCount(returnDate.getDay(), setReturnDay);
 
-      setReturnMonth(returnDate.getMonth());
-      setReturnDay(returnDate.getDate());
+      // setReturnMonth(returnDate.getMonth());
+      // setReturnDay(returnDate.getDate());
       setDayError("");
       setMonthError("");
       setYearError("");
@@ -114,10 +136,14 @@ function App() {
   function animateCount(end, setState) {
     let count = 0;
     let interval = setInterval(() => {
-      if (count >= end) clearInterval(interval);
-      count++;
-      setState(count);
+      if (count > end) {
+        clearInterval(interval);
+      } else {
+        setState(count);
+        count++;
+      }
     }, 15);
+    setState(end);
   }
 
   return (
